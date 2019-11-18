@@ -22,3 +22,24 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+
+def calendar_func():
+  try:
+    month = int(sys.argv[1])
+  except:
+    month = datetime.now().month
+
+  try:
+    year = int(sys.argv[2])
+  except:
+    year = datetime.now().year
+
+  if month not in range(1, 13):
+    print("Invalid input. Please enter `14_cal.py month [year]`")
+    sys.exit(1)
+
+  print(calendar.month(year, month))
+  
+
+calendar_func()
