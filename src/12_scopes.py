@@ -9,16 +9,24 @@ def changeX():
 
 changeX()
 
+print(f'x local scope: {x}')
 # This prints 12. What do we have to modify in changeX() to get it to print 99?
-print(x)
+def changeX():
+    global x
+    x = 99
+
+
+changeX()
+
+print(f'x global scope: {x}')
 
 
 # This nested function has a similar problem.
-
 def outer():
     y = 120
 
     def inner():
+        nonlocal y # ANSWER: declare y as a nonlocal variable
         y = 999
 
     inner()
